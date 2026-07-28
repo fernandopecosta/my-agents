@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+data/*
+!data/.gitkeep
+storage/*
+!storage/.gitkeep
+README.md
+.cursor
+*.md
+!package.json
+!package-lock.json

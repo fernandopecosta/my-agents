@@ -45,12 +45,15 @@ Abra [http://localhost:3000](http://localhost:3000).
 | `npm run start` | Servidor de produção |
 | `npm run lint` | ESLint |
 
-## Deploy no Railway
+## Deploy
 
-1. Faça push do repositório para o GitHub
-2. Crie um projeto no [Railway](https://railway.com) e conecte o repo
-3. Configure as variáveis de ambiente (veja `.env.example`)
-4. Adicione um **Volume** montado em `/data` e defina `PERSISTENT_DATA_PATH=/data`
-5. Gere um domínio público em **Settings → Networking**
+- **[Coolify](COOLIFY.md)** — recomendado (Docker + volume persistente)
+- Repositório: https://github.com/fernandopecosta/my-agents
 
-Sem o volume persistente, uploads e cadastros serão perdidos a cada redeploy.
+### Resumo Coolify
+
+1. New Application → repo `my-agents` → branch `main`
+2. Build Pack: **Dockerfile** · Porta: **3000**
+3. Variáveis: `AUTH_PASSWORD`, `AUTH_EDIT_PASSWORD`, `AUTH_SECRET`, `PERSISTENT_DATA_PATH=/data`
+4. Persistent Storage montado em **`/data`**
+5. Deploy + configurar domínio

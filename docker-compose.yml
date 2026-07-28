@@ -1,0 +1,16 @@
+services:
+  my-agents:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      AUTH_PASSWORD: ${AUTH_PASSWORD:-admin}
+      AUTH_EDIT_PASSWORD: ${AUTH_EDIT_PASSWORD:-edit-admin}
+      AUTH_SECRET: ${AUTH_SECRET:-change-me-in-production}
+      PERSISTENT_DATA_PATH: /data
+    volumes:
+      - my-agents-data:/data
+    restart: unless-stopped
+
+volumes:
+  my-agents-data:
