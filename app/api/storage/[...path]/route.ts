@@ -1,16 +1,20 @@
 import fs from "fs/promises";
 import path from "path";
 import { NextRequest, NextResponse } from "next/server";
+import { getStorageRoot } from "@/lib/agents";
 
 type RouteParams = { params: Promise<{ path: string[] }> };
 
 export async function GET(_request: NextRequest, { params }: RouteParams) {
   try {
     const { path: segments } = await params;
-    const filePath = path.join(process.cwd(), ...segments);
+    const storageRoot = path.resolve(getStorageRoot());
 
+    const relativeSegments =
+      segments[0] === "storage" ? segments.slice(1) : segments;
+
+    const filePath = path.join(storageRoot, ...relativeSegments);
     const resolved = path.resolve(filePath);
-    const storageRoot = path.resolve(process.cwd(), "storage");
 
     if (!resolved.startsWith(storageRoot)) {
       return NextResponse.json({ error: "Acesso negado" }, { status: 403 });

@@ -22,6 +22,12 @@ const STORAGE_DIR = PERSISTENT_ROOT
   ? path.join(PERSISTENT_ROOT, "storage", "agents")
   : path.join(ROOT, "storage", "agents");
 
+export function getStorageRoot(): string {
+  return PERSISTENT_ROOT
+    ? path.join(PERSISTENT_ROOT, "storage")
+    : path.join(ROOT, "storage");
+}
+
 export function getAgentDir(id: string): string {
   return path.join(STORAGE_DIR, id);
 }
