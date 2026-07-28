@@ -70,4 +70,5 @@ Acesse http://localhost:3000
 | App sobe mas perde dados | Confirme volume em `/data` e `PERSISTENT_DATA_PATH=/data` |
 | 502 / unhealthy | Porta deve ser `3000` |
 | Login não funciona | Verifique `AUTH_SECRET` definido em produção |
+| `EACCES` em `/data/agents.json` | Confirme redeploy com a versão mais recente (entrypoint corrige permissões do volume) |
 | Build falha | Veja logs; confirme que usa **Dockerfile**, não Nixpacks |
